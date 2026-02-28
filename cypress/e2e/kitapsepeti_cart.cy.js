@@ -41,13 +41,13 @@ describe('User Story 04: Sepet Yönetimi ve Kontrolü', () => {
 });
 it('AC 8 & AC 10: Satın Al süreci ve Adres sayfasına yönlendirme', () => {
     // 1. Sepet sayfasındaki 'Satın Al' butonuna tıkla
-    // 'be.visible' yerine 'exist' kullanıyoruz çünkü çerez banner'ı kapatıyor
+    // 'be.visible' yerine 'exist' çünkü çerez banner'ı kapatıyor..
     CartPage.elements.checkoutBtn()
         .should('exist') 
-        .click({ force: true }); // Overlay engelini aşar
+        .click({ force: true }); // Overlay engelini aşmak için 'force: true' kullan
 
     // 2. Giriş sayfasında 'Üye Olmadan Devam Et' butonuna tıkla
-    // Bu aşamada da overlay çıkabilir, 'exist' ve 'force: true' ile ilerliyoruz
+    // Bu aşamada da overlay çıkabilir, 'exist' ve 'force: true' ile devam et
     CartPage.elements.continueAsGuestBtn()
         .should('exist')
         .click({ force: true });

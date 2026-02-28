@@ -21,19 +21,15 @@ cy.url().should('include', '/siparis-uye-giris');
 
         // --- AC2: Misafir Seçeneği ---
 GuestAddressPage.elements.continueAsGuestBtn().click({ force: true })
-    .should('exist', { timeout: 10000 }) // Sayfanın yüklenmesi için zaman tanı
+    .should('exist', { timeout: 10000 }) // Sayfanın yüklenmesi için zaman
     .click({ force: true });
     
 
         // --- AC3: Adres Formu Sayfası ---
         cy.url({ timeout: 15000 }).should('include', '/order/address');
-// Başlığın görünmesi için Cypress'a 10 saniye ek süre tanıyalım
+// Başlığın görünmesi için Cypress'a 10 saniye ek süre
 GuestAddressPage.elements.addressPageTitle()
-    .should('be.visible', { timeout: 10000 });        
-
-        
-
-        // ... (Dünkü sepet ve login geçiş kodları burada duruyor) ...
+    .should('be.visible', { timeout: 10000 });
 
 // --- AC5: Negatif Test (Boş Form Doğrulaması) ---
 // Form boşken kaydet diyoruz
@@ -47,11 +43,11 @@ GuestAddressPage.elements.errorMessage()
 // --- AC4 & AC6: Başarılı Form Doldurma ---
 GuestAddressPage.elements.fullNameInput().type('Test Misafir', { force: true });
 GuestAddressPage.elements.emailInput()
-    .clear({ force: true }) // Hata veren satır tam olarak burası
+    .clear({ force: true })
     .type('testguest@mail.com', { force: true });
 
-// --- KRİTİK ADIM: Dropdown Seçimleri ---
-// Şehir seçildikten sonra ilçenin yüklenmesi için kısa bir bekleme gerekir
+// --- KRİTİK ADIM: Dropdown ----
+// Şehir seçildikten sonra ilçenin yüklenmesi için kısa bir bekle
 GuestAddressPage.elements.citySelect().select('İstanbul', { force: true });
 cy.wait(2000); // API'den ilçelerin gelmesini bekliyoruz
 
@@ -67,7 +63,7 @@ GuestAddressPage.elements.phoneInput().type('5554443322', { force: true });
 // --- AC6: Başarılı Form Gönderimi ve Ödeme Sayfasına Geçiş ---
 GuestAddressPage.elements.saveAddressBtn().click({ force: true });
 
-// Ödeme sayfasına (payment) ulaştığımızı doğrula
+// Ödeme sayfasına ulaştığımızı doğrula
 cy.url({ timeout: 15000 }).should('include', '/order/payment');
     });
 });

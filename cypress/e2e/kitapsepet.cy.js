@@ -4,7 +4,6 @@ describe('Kitapsepeti US01: Kullanıcı Girişi Tüm Senaryolar', () => {
     
     beforeEach(() => {
     LoginPage.visit();
-    // Eğer o overlay varsa, onu DOM'dan kaldır veya gizle
     cy.get('body').then(($body) => {
         if ($body.find('.ccp---nb-interstitial-overlay').length > 0) {
             cy.get('.ccp---nb-interstitial-overlay').invoke('css', 'display', 'none');
@@ -60,6 +59,9 @@ describe('Kitapsepeti US01: Kullanıcı Girişi Tüm Senaryolar', () => {
         LoginPage.elements.loginPanelTrigger().click({ force: true });
         cy.contains('Şifremi Unuttum').click({ force: true });
         cy.url().should('include', 'uye-sifre-hatirlat'); //
+        
+        
+        
         // Ekstra kontrol: Sayfada email alanı ve şifremi hatırlat butonu olmalı
         LoginPage.elements.forgotEmailInput().should('exist');
         LoginPage.elements.sendResetBtn().should('exist');

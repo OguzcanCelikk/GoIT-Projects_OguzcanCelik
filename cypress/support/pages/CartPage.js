@@ -17,7 +17,6 @@ class CartPage {
         // AC7 & AC8: Durum Kontrolleri
         emptyCartMessage: () => cy.contains(/Sepetinizde ürün bulunmamaktadır/i),
         continueShoppingBtn: () => cy.contains('Alışverişe Devam Et'),
-        // Satın Al butonunun ID'si yanıltıcıdır ama budur:
         checkoutBtn: () => cy.get('#cart-buy-btn'),
         continueAsGuestBtn: () => cy.contains('button', 'Üye Olmadan Devam Et')
     };

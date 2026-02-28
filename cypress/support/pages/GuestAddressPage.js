@@ -3,10 +3,10 @@ class GuestAddressPage {
         continueAsGuestBtn: () => cy.contains('button', /Üye Olmadan Devam Et/i),
         addressPageTitle: () => cy.contains(/Adres Bilgileri/i),
 
-        // AC4: Görsellerden (image_223848 ve image_22a580) alınan gerçek ID'ler
-        fullNameInput: () => cy.get('#fullname'), // firstname_lastname değil fullname'miş
+        // AC4:
+        fullNameInput: () => cy.get('#fullname'),
         emailInput: () => cy.get('#order-address-form [name="email"]'), 
-        phoneInput: () => cy.get('#mobile_phone'), // telephone değil mobile_phone'muş
+        phoneInput: () => cy.get('#mobile_phone'),
         
         citySelect: () => cy.get('.city-container select'),
         townSelect: () => cy.get('.town-container select'),

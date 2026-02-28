@@ -4,12 +4,9 @@ import ProductPage from '../support/pages/ProductPage';
 describe('User Story 03: Ürün Detay Sayfası ve Sepet Süreçleri', () => {
     
     beforeEach(() => {
-        // Teste temiz bir başlangıç için ana sayfaya git
         cy.visit('/');
         cy.wait(2000);
     });
-
-    // ... importlar ...
 
 it ('AC1 - AC3: Detay sayfasını görüntüleme ve bilgilerin doğruluğu', () => {
     SearchPage.searchProduct('roman');
@@ -39,14 +36,13 @@ it ('AC4 - AC6: Sepete ekleme ve sayaç artışı kontrolü', () => {
     // AC4: Sepete ekle butonuna tıkla
     ProductPage.elements.addToCartBtn().should('exist').click({ force: true });
 
-    // AC5: Onay mesajı ve pop-up kontrolü (BURAYI GÜNCELLEDİK)
+    // AC5: Onay mesajı ve pop-up kontrolü
     // 'be.visible' yerine 'exist' kullanıyoruz çünkü overlay engelliyor
     ProductPage.elements.successModal().should('exist'); 
     ProductPage.elements.successMessage().should('exist').and('contain', 'Ürün Başarıyla Sepete Eklendi');
     ProductPage.elements.goToCartBtn().should('exist');
 
     // AC6: Sepet sayacı kontrolü
-    // Pop-up kapandığında veya sayfa yenilendiğinde sayaç güncellenir
     cy.reload(); 
     ProductPage.elements.cartCountBadge().should('not.have.text', '0').and('contain', '1');
 });

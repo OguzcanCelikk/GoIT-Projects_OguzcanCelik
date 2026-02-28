@@ -6,7 +6,7 @@ import PaymentPage from '../support/pages/PaymentPage';
 describe('User Story 05: Tam Ödeme ve Form Doğrulama Akışı', () => {
     
     const credentials = {
-        email: 'celik.oguzcan@hotmail.com',
+        email: 'test.test@hotmail.com',
         pass: 'wSGYF8gMt2s.Ap'
     };
 
@@ -36,23 +36,20 @@ describe('User Story 05: Tam Ödeme ve Form Doğrulama Akışı', () => {
 
         // --- AC6: Pozitif Test - Kart Bilgileri ve Buton Aktivasyonu ---
         PaymentPage.elements.cardNameInput().type('Test Kullanıcısı', { force: true });
-        // iyzico test kartı: 4506...
         PaymentPage.elements.cardNumberInput().type('4506340000000000', { force: true });
         PaymentPage.elements.cardExpiryInput().type('1230', { force: true });
         PaymentPage.elements.cardCvvInput().type('123', { force: true });
 
-        // Tüm alanlar dolduğunda butonun aktif (tıklanabilir) olduğunu doğrula
+        // Tüm alanlar dolduğunda butonun aktif olduğunu doğrula
         PaymentPage.elements.paymentSubmitBtn().should('not.have.attr', 'disabled');
 
         // --- AC7: Negatif Test - Hatalı Kart ve Uyarı Mesajı ---
-        // Kart numarasını bilerek hatalı yapıyoruz
+        // Kart numarasını bilerek hatalı yap
         PaymentPage.elements.cardNumberInput().clear({ force: true }).type('1111', { force: true });
         
         // Hata mesajının varlığını ve içeriğini doğrula
         PaymentPage.elements.cardNumberErrorMsg()
             .should('be.visible')
             .and('have.text', 'Geçersiz bir kart numarası girdiniz');
-
-        // KRİTİK NOT: AC gereği gerçek sipariş oluşmaması için ödeme butonuna BASILMAMALIDIR!
     });
 });

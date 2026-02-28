@@ -13,11 +13,11 @@ class PaymentPage {
 orderSummaryBox: () => cy.get('#order-products'),
 grandTotalOnPayment: () => cy.get('#order-products .fw-bold').last(),
 
-// AC3: Kargo Seçenekleri
+        // AC3: Kargo Seçenekleri
         pttCargoRadio: () => cy.get('#cargo-item-input-1'),
         hepsijetCargoRadio: () => cy.get('#cargo-item-input-2'),
 
-        // AC4: Ödeme Seçenekleri (Tablar)
+        // AC4: Ödeme Seçenekleri
         iyzicoTab: () => cy.get('#iyz-tab-payWithIyzico'),
         creditCardTab: () => cy.get('#iyz-tab-credit-card'),
 
@@ -33,8 +33,6 @@ grandTotalOnPayment: () => cy.get('#order-products .fw-bold').last(),
 
         // AC8: Sipariş Özeti Kutusu
         orderSummaryBox: () => cy.get('#order-summary'), 
-        
-        // Hatanın Çözümü: Direkt 'Genel Toplam' yazısının olduğu satırı bulur
         grandTotalOnPayment: () => cy.get('#order-summary').contains('Genel Toplam').parent()
     };
 

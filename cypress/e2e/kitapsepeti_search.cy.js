@@ -19,10 +19,8 @@ describe('User Story 02: Arama ve Filtreleme Fonksiyonları', () => {
 
     it('AC3 & AC4: Sıralama fonksiyonu - Fiyat Artan doğrulaması', () => {
     cy.visit('/roman');
-    // 'Fiyat Artan' seçeneğini seçiyoruz
+    // 'Fiyat Artan' seçeneğini seç
     SearchPage.elements.sortingDropdown().select('Fiyat Artan', { force: true });
-    
-    // Hata buradaydı: 'sort=price_asc' yerine 'sort=5' yazıyoruz
     cy.url().should('include', 'sort=5'); 
 });
 
@@ -30,10 +28,9 @@ describe('User Story 02: Arama ve Filtreleme Fonksiyonları', () => {
     cy.visit('/roman');
     cy.wait(3000);
 
-    // 1. Ürünün üzerine gelmeyi yine de tetikleyelim (gelenek bozulmasın)
+    // 1. Ürünün üzerine gelmeyi tetikle
     SearchPage.elements.productItems().first().trigger('mouseover', { force: true });
-
-    // 2. İŞTE O ZORLAYICI HAMLE:
+    
     // Butonu bul, CSS'ini 'visible' ve 'opacity: 1' yap, sonra metnini kontrol et.
     SearchPage.elements.addToCartBtn().first()
         .invoke('attr', 'style', 'visibility: visible !important; opacity: 1 !important; display: block !important;')
