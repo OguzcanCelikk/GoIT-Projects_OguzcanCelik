@@ -1,14 +1,36 @@
-# 📚 Kitapsepeti Test Otomasyon Projesi
+# Kitapsepeti Test Otomasyon Projesi
 
 Bu proje, **Kitapsepeti** web sitesinin uçtan uca test senaryolarını otomatize etmek amacıyla **Cypress** ve **Page Object Model (POM)** yapısı kullanılarak geliştirilmiştir.
 
-## 🚀 Özellikler
+## Özellikler
 * **Framework:** Cypress 15.9.0
 * **Raporlama:** Allure Report
 * **Mimari:** Page Object Model (POM)
 * **Stabilite:** Terminal (headless) modda çerez ve senkronizasyon kontrolleri optimize edilmiştir.
 
-## 🛠️ Kurulum
-Projeyi yerelinizde çalıştırmak için önce bağımlılıkları yükleyin:
+## Tamamlanan Senaryolar
+US01: Kullanıcı Girişi (Pozitif/Negatif)
+US02: Arama ve Filtreleme
+US03: Ürün Detay ve Sepet
+US04: Sepet Yönetimi
+US05: Ödeme Akışı ve Form Doğrulama
+US06: Misafir Alışveriş Akışı
+
+## Kurulum
+Projeyi yerelinizde çalıştırmak için önce gerekli uygulamaları yükleyin:
 ```bash
 npm install
+
+
+## Tamamlanan Senaryolar
+## US01: Kullanıcı Girişi (Pozitif/Negatif)
+
+## US02: Arama ve Filtreleme
+
+## US03: Ürün Detay ve Sepet
+
+## US04: Sepet Yönetimi
+
+## US05: Ödeme Akışı ve Form Doğrulama
+
+## US06: Misafir Alışveriş Akışı
