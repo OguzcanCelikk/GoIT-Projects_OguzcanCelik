@@ -8,13 +8,6 @@ Bu proje, **Kitapsepeti** web sitesinin uçtan uca test senaryolarını otomatiz
 * **Mimari:** Page Object Model (POM)
 * **Stabilite:** Terminal (headless) modda çerez ve senkronizasyon kontrolleri optimize edilmiştir.
 
-## Tamamlanan Senaryolar
-US01: Kullanıcı Girişi (Pozitif/Negatif)
-US02: Arama ve Filtreleme
-US03: Ürün Detay ve Sepet
-US04: Sepet Yönetimi
-US05: Ödeme Akışı ve Form Doğrulama
-US06: Misafir Alışveriş Akışı
 
 ## Kurulum
 Projeyi yerelinizde çalıştırmak için önce gerekli uygulamaları yükleyin:
