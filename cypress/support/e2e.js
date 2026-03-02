@@ -14,6 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
+import "allure-cypress";
 import './commands'
 Cypress.on('uncaught:exception', (err, runnable) => {
   return false;
@@ -21,4 +22,5 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 Cypress.on('window:before:load', (win) => {
   // Sitenin çerez uyarısını yerel depolamadan (localStorage) kapatmak için:
   // win.localStorage.setItem('cookie-accepted', 'true'); 
+  
 });

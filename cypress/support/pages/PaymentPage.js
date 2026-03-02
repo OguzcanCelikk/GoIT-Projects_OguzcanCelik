@@ -3,39 +3,33 @@ class PaymentPage {
         // Login Alanları
         loginEmail: () => cy.get('#login-form-131 [name="email"]'),
         loginPassword: () => cy.get('#login-form-131 [name="password"]'),
-        loginSubmitBtn: () => cy.get('#ug-submit-btn'), //
+        loginSubmitBtn: () => cy.get('#ug-submit-btn'),
 
-        // Adres/Sipariş Sayfası Butonu
-        proceedToPaymentBtn: () => cy.get('.order-next-btn').contains('Ödeme Adımına Geç'),
-        
+        // Adres Sayfasından Ödeme Sayfasına Geçiş Butonu
+        proceedToPaymentBtn: () => cy.get('.order-next-btn').first(),
 
-        // Sipariş Özeti ve Toplam
-orderSummaryBox: () => cy.get('#order-products'),
-grandTotalOnPayment: () => cy.get('#order-products .fw-bold').last(),
-
-        // AC3: Kargo Seçenekleri
+        // Kargo Seçenekleri
         pttCargoRadio: () => cy.get('#cargo-item-input-1'),
         hepsijetCargoRadio: () => cy.get('#cargo-item-input-2'),
 
-        // AC4: Ödeme Seçenekleri
+        // Ödeme Sekmeleri
         iyzicoTab: () => cy.get('#iyz-tab-payWithIyzico'),
         creditCardTab: () => cy.get('#iyz-tab-credit-card'),
 
-        // AC5: Kredi Kartı Formu
+        // Kredi Kartı Formu
         cardNameInput: () => cy.get('#ccname'),
         cardNumberInput: () => cy.get('#ccnumber'),
         cardExpiryInput: () => cy.get('#ccexp'),
         cardCvvInput: () => cy.get('#cccvc'),
 
-        // AC6: Final Ödeme Butonu
+        // Final İşlemler
         paymentSubmitBtn: () => cy.get('#iyz-payment-button'),
         cardNumberErrorMsg: () => cy.contains('Geçersiz bir kart numarası girdiniz'),
-
-        // AC8: Sipariş Özeti Kutusu
+        
+        // Sipariş Özeti
         orderSummaryBox: () => cy.get('#order-summary'), 
         grandTotalOnPayment: () => cy.get('#order-summary').contains('Genel Toplam').parent()
     };
-
-    };
+}
 
 export default new PaymentPage();
