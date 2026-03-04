@@ -1,45 +1,45 @@
 config:
-  ##### Hedef API (JSONPlaceholder)
+  ##### Hedef API / Target API (JSONPlaceholder)
   target: "https://jsonplaceholder.typicode.com"
   
-  ##### 1. ÖDEV MADDESİ: PHASES
+  ##### 1. ISINMA AŞAMASI / WARM-UP PHASE
   phases:
-    - duration: 5          ##### 
-      arrivalRate: 1       ##### Her saniye 1 yeni kullanıcı gelecek
+    - duration: 5        ##### Test süresi 5 saniye / Test duration: 5 seconds
+      arrivalRate: 1     ##### Her saniye 1 yeni kullanıcı gelecek / 1 new user per second
       name: "Warm up phase"
 
-  ##### 2. ÖDEV MADDESİ: PAYLOAD
+  ##### 2. VERİ SETİ / PAYLOAD (Data-Driven Testing)
   payload:
     path: "users.csv"      
     fields:
-      - "name"             # CSV'deki ilk sütun
-      - "job"              # CSV'deki ikinci sütun
-    order: sequence        # Sırayla oku
+      - "name"             # CSV'deki ilk sütun / First column in CSV
+      - "job"              # CSV'deki ikinci sütun / Second column in CSV
+    order: sequence        # Sırayla oku / Read in sequence
 
-  ##### 3. ÖDEV MADDESİ: DOĞRULAMA
+  ##### 3. PERFORMANS EŞİKLERİ (SLA) / PERFORMANCE THRESHOLDS (SLA)
   ensure:
     thresholds:
-      ##### Metrik 1: İsteklerin %95'i 1500ms altında tamamlanmalı (SLA)
+      ##### İsteklerin %95'i 1500ms altında olmalı / 95% of requests must be under 1500ms
       - "http.response_time.p95": 1500
       
-      ##### Metrik 2: En yavaş istek bile 3000ms'yi geçmemeli (SLA)
+      ##### En yavaş istek 3000ms'yi geçmemeli / Max response time should not exceed 3000ms
       - "http.response_time.max": 3000
       
-      #### Metrik 3: Hata oranı %1'den az olmalı (SLA)
+      #### Hata oranı %1'den az olmalı / Error rate must be less than 1%
       - "vusers.failed": 1
 
 scenarios:
   - flow:
-      ##### 4. ÖDEV MADDESİ: FLOW  - GET ve POST İstekleri
+      ##### 4. TEST AKIŞI: GET ve POST / FLOW: GET and POST Requests
       
-      #### Adım 1: GET İsteği
+      #### Adım 1: Tüm gönderileri getir / Step 1: Fetch all posts
       - get:
           url: "/posts"
       
-      ##### Adım 2: POST İsteği
+      ##### Adım 2: CSV verisiyle yeni gönderi oluştur / Step 2: Create post with CSV data
       - post:
           url: "/posts"
           json:
-            title: "{{ name }}"  # CSV'den gelen isim
-            body: "{{ job }}"    # CSV'den gelen meslek
+            title: "{{ name }}"  # CSV'den gelen isim / Name from CSV
+            body: "{{ job }}"    # CSV'den gelen meslek / Job from CSV
             userId: 1
